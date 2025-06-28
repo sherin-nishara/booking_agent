@@ -1,13 +1,14 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
 from fastapi.middleware.cors import CORSMiddleware
-from langgraph_agent import Agent
-from cal_utils import check_availability, create_event, list_events, cancel_event_by_time
+from .langgraph_agent import Agent
+from .cal_utils import check_availability, create_event, list_events, cancel_event_by_time
 from datetime import datetime
 
 app = FastAPI()
 agent = Agent()
 
+# CORS setup
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
@@ -16,6 +17,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+# Request and response models
 class ChatRequest(BaseModel):
     message: str
     context: dict = {}
@@ -24,28 +26,41 @@ class ChatResponse(BaseModel):
     reply: str
     intent: str
     data: dict
-    
+
+@app.get("/")
+async def root():
+    return {"status": "✅ Booking agent backend is live!"}
+
 @app.post("/", response_model=ChatResponse)
 async def chat(req: ChatRequest):
-    # Greeting check
+    # Greeting shortcut
     greetings = ["hi", "hello", "heyy", "hey", "hai"]
     if req.message.lower().strip() in greetings:
-        return ChatResponse(reply="👋 Hello! I'm your AI meeting assistant. You can ask me to *book*, *check*, *cancel* or *reschedule* meetings!", intent="greet", data={})
+        return ChatResponse(
+            reply="👋 Hello! I'm your AI meeting assistant. You can ask me to *book*, *check*, *cancel* or *reschedule* meetings!",
+            intent="greet",
+            data={}
+        )
 
+    # NLP agent processing
     intent, data = agent.parse_intent(req.message, req.context)
-    slots = agent.extract_time_slots(data)
+    slots = agent.extract_time_slots(data) or {}
+
+    start = slots.get("start")
+    end = slots.get("end")
     reply = "❌ Couldn't understand your request."
 
-    if slots["start"] and slots["end"]:
-        is_free = check_availability(slots["start"], slots["end"])
+    if start and end:
+        is_free = check_availability(start, end)
     else:
         is_free = False
 
+    # Intent handling
     if intent == "book_meeting":
-        if slots["start"] and slots["end"]:
+        if start and end:
             if is_free:
-                create_event(slots["start"], slots["end"])
-                reply = f"📅 Meeting booked on {slots['start'].strftime('%A, %B %d, %Y')} from {slots['start'].strftime('%I:%M %p')} to {slots['end'].strftime('%I:%M %p')}."
+                create_event(start, end)
+                reply = f"📅 Meeting booked on {start.strftime('%A, %B %d, %Y')} from {start.strftime('%I:%M %p')} to {end.strftime('%I:%M %p')}."
             else:
                 reply = agent.reply_unavailable(slots)
         else:
@@ -58,9 +73,11 @@ async def chat(req: ChatRequest):
         reply = list_events()
 
     elif intent == "cancel_meeting":
-        cancelled = cancel_event_by_time(slots["start"], slots["end"])
-        reply = "✅ Meeting cancelled." if cancelled else "❌ No meeting found at that time to cancel."
-
+        if start and end:
+            cancelled = cancel_event_by_time(start, end)
+            reply = "✅ Meeting cancelled." if cancelled else "❌ No meeting found at that time to cancel."
+        else:
+            reply = "❌ Please specify the time of the meeting to cancel."
 
     elif intent == "reschedule_meeting":
         reply = "🔁 Rescheduling not implemented yet."
