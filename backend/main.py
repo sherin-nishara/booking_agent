@@ -1,8 +1,8 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
 from fastapi.middleware.cors import CORSMiddleware
-from .langgraph_agent import Agent
-from .cal_utils import check_availability, create_event, list_events, cancel_event_by_time
+from langgraph_agent import Agent
+from cal_utils import check_availability, create_event, list_events, cancel_event_by_time
 from datetime import datetime
 
 app = FastAPI()
