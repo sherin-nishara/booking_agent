@@ -25,6 +25,10 @@ class ChatResponse(BaseModel):
     intent: str
     data: dict
 
+@app.get("/")
+async def root():
+    return {"status": "✅ Booking agent backend is live!"}
+    
 @app.post("/chat", response_model=ChatResponse)
 async def chat(req: ChatRequest):
     # Greeting check
