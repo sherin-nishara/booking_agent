@@ -5,9 +5,7 @@ import dateparser
 import os
 
 SCOPES = ['https://www.googleapis.com/auth/calendar']
-
-SERVICE_ACCOUNT_FILE = '/etc/secrets/airy-coil-423816-b8-da03c8809156.json'
-
+SERVICE_ACCOUNT_FILE = f"/etc/secrets/{os.getenv('GOOGLE_SERVICE_ACCOUNT_FILE')}"
 
 credentials = service_account.Credentials.from_service_account_file(SERVICE_ACCOUNT_FILE, scopes=SCOPES)
 service = build('calendar', 'v3', credentials=credentials)
