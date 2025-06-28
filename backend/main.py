@@ -29,7 +29,7 @@ class ChatResponse(BaseModel):
 async def root():
     return {"status": "✅ Booking agent backend is live!"}
     
-@app.post("/chat", response_model=ChatResponse)
+@app.post("/", response_model=ChatResponse)
 async def chat(req: ChatRequest):
     # Greeting check
     greetings = ["hi", "hello", "heyy", "hey", "hai"]
