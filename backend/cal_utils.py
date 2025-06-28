@@ -2,11 +2,12 @@ from google.oauth2 import service_account
 from googleapiclient.discovery import build
 from datetime import datetime, timedelta
 import dateparser
-
+import os
 
 SCOPES = ['https://www.googleapis.com/auth/calendar']
-import os
-SERVICE_ACCOUNT_FILE = os.getenv("GOOGLE_SERVICE_ACCOUNT_FILE")
+
+SERVICE_ACCOUNT_FILE = '/etc/secrets/airy-coil-423816-b8-da03c8809156.json'
+
 
 credentials = service_account.Credentials.from_service_account_file(SERVICE_ACCOUNT_FILE, scopes=SCOPES)
 service = build('calendar', 'v3', credentials=credentials)
