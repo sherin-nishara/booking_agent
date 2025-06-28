@@ -1,13 +1,1 @@
-{
-  "type": "service_account",
-  "project_id": "airy-coil-423816-b8",
-  "private_key_id": "da03c880915607769916132fb834ec533c473b5a",
-  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQCthsZGDVWdMTdd\nMeu6SEJENsnEI85K34+rQA5BnB3eMU9Lxt04Jjl5UenIpx0Eu9KgLIQR6VYpNfwh\nPwu6JdurTm4Z8iKsEAEq1W6lFuQ95VMiw2NYsZZlbJ6a1D2DcThWeK/7tEcOzoTi\nCvLG2uwtFcODmEzFZfSXn1g6QkAjsYvcUSmziDnBA9TRMrtoE0UKEMWBdLsc68I/\nennLs2x7vTGK6OAbdVb59CAzvw04O1Hmc1zE4pzLfo5z5x7/+yNSBEeSILeZbxV3\nWcdKl9XB96QrkV5y+Eaxc6QbdibvHaNnV61hnFg70By98+B0SisejTRIwVkm/K6M\nerlBEry/AgMBAAECggEAEzankI0cbC3NZAfJgpRKphPs7kdKqbasSTlr+q7HDdmm\n3oyT5QoydfDwclOynloPncWgD/2mmSSNmL7K1R8o/gROo5fQZ/3Tq0L7n9Lzjbjt\nJh29S85KCUvoGdujPgEUzFpLnhKdhZGvW/n7XLJT0UAmKFV+NqMt3HX7xmOch3cL\n9eZcUmB03Z3KN/6wTzle+OYP6sf8yJzeBi1iQl4vqNyD98vGgbuAMryKwxa4YE5v\nBpgI1jEBvHSllIi6+1TVD205CwoNEalgWZCQ1SxWg18s/vtZJR0LqUhZA661jgVI\nMDSDDp/8c2nPa0G+qFNb8i/x6SlX1zqh6+wxs1JYLQKBgQDfGPAMv+OTI2ZV/l3k\nb7dS9nmvri7vg6kqweakZNl9y9wPA0nQfVF14JVx1o68ysDHsPCz9KOlE9gwx3Un\nRBoqvDHSzIHilz8YJVdURO9H3PqB/mwRKeBJTUSrQHofirydeXsYbx7iLJpdPSJ3\nkfnZHBAq2qyy0WBgSwFlpa1SqwKBgQDHHkgBJMtTTWvUK50SK8D+m8zSPJ5FpFCO\nq1ZT0Gy+aAu46XVQy32c97AWOE4yTHbpfvDfYbSkcXwQwnc9xxGWxBAAPLNOuvGr\nVa540Shcy/gy+ylIrtkznuwXPziYFGPonOzajBwW2IBHv0p0OUHvR9UkWApHGNOH\nedPddUIePQKBgGH/nlK7Z8gWYLmdhrj1qd2zjzhwlwV3HDRAAIRuGGt9xSiDFUWU\nBth00rCywviDR7NwMguahtfYo7qpovigna3wBSLH2rYiIgEFRhsqPMGgfBnmHKpd\nbrxESMnBBOQeGURDPKM7DKHlXdlfJWjIoquP/DoW3I2gE2m5COARqtUJAoGAcOIn\n7A4R/x3rPZOkLoMDnNRy39Vh3RV0Xg2gmU+V9rRBwQkJa06R3gVFnLM7EaTr3SAM\nKnfX00pLDa1RsIJE5HYupBPFi6LME1g122SoP0ObaDufggcuN+em7N74lK8qnNsq\nJBQ+cG04/HPkH9O+H4tXuIz49qmKckmM5QXu//kCgYA382aKC9NtXXwJE70tg9I1\nEexaQcl2LpVEqeSInIP0W6wkdzIrSUaSVCwDm7dAKELdDDLONz2terhWutBYkFtm\nfUrEOOpqgou+m+Px+Xaai8wgC5k0bxBHHnT38OJ2SIc/uzZgFJuOX6T+KTa9WcjX\n9bzuE3Y79EBlPohBkCpZEg==\n-----END PRIVATE KEY-----\n",
-  "client_email": "bookingbot@airy-coil-423816-b8.iam.gserviceaccount.com",
-  "client_id": "117295674488499993883",
-  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
-  "token_uri": "https://oauth2.googleapis.com/token",
-  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
-  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/bookingbot%40airy-coil-423816-b8.iam.gserviceaccount.com",
-  "universe_domain": "googleapis.com"
-}
+
