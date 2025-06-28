@@ -62,7 +62,6 @@ async def chat(req: ChatRequest):
         reply = list_events()
 
     elif intent == "cancel_meeting":
-        from cal_utils import cancel_event_by_time  # 👈 Make sure this function is implemented
         cancelled = cancel_event_by_time(slots["start"], slots["end"])
         reply = "✅ Meeting cancelled." if cancelled else "❌ No meeting found at that time to cancel."
 
