@@ -1,5 +1,8 @@
 import streamlit as st
 import requests
+import os
+
+BACKEND_URL = os.getenv("BACKEND_URL", "http://localhost:8000")
 
 st.set_page_config(page_title="Booking Agent", layout="centered")
 st.title("🤖 AI Booking Assistant")
@@ -22,7 +25,7 @@ if user_input:
     st.session_state.messages.append({"role": "user", "content": user_input})
     with st.spinner("Thinking..."):
         try:
-            response = requests.post("http://localhost:8000/chat", json={
+            response = requests.post(f"{BACKEND_URL}/chat", json={
                 "message": user_input,
                 "context": st.session_state.context
             })
@@ -42,7 +45,7 @@ st.divider()
 if st.button("📅 View My Schedule (next 2 days)"):
     with st.spinner("Fetching schedule..."):
         try:
-            response = requests.post("http://localhost:8000/chat", json={
+            response = requests.post(f"{BACKEND_URL}/chat", json={
                 "message": "What’s my schedule?",
                 "context": {}
             })
